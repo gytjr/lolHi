@@ -24,5 +24,6 @@ public class HomeController {
 	public int showPlus(int a, int b) {
 		return a + b;
 	}
+
 	
 }

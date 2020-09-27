@@ -1,2 +1,32 @@
-server :
-  port : 8085
+spring:
+  profiles:
+    active: local # 기본적으로 local이 선택된다는 뜻
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/ 
+      suffix: .jsp
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/lolHi?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC # DB명 치환
+    username: sbsst # DB아이디 치환
+    password: sbs123414 # DB비번 치환
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB      
+
+mybatis:
+  type-aliases-package: com.sbs.example.lolHi.dto # dto의 풀 패키지 명 입력
+
+custom:
+  siteName: 롤하이
+  logging:
+    dir: log
+    level: info
+---
+
+spring:
+  profiles: local
+server:
+  port: 8085 # 포트번호 치환
