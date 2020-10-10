@@ -17,5 +17,18 @@ public class ArticleService {
 	public List<Article> getArticles() {
 		return articleDao.getArticles();
 	}
+	
+	public Article getArticleById(int id) {
+		return articleDao.getArticleById(id);
+	}
+	
+	public void deleteArticleById(int id) {
+		articleDao.deleteArticleById(id);
+	}
+
+	public void modifyArticleById(int id, String title, String body) {
+		articleDao.modifyArticleById(id, title, body);
+		
+	}
 
 }

@@ -6,22 +6,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbs.example.lolHi.dto.Article;
 import com.sbs.example.lolHi.service.ArticleService;
 
 @Controller
 public class ArticleController {
-	
+
 	@Autowired
 	private ArticleService articleService;
 
-	@RequestMapping("/usr/home/list")
+	@RequestMapping("/usr/article/list")
 	public String showList(Model model) {
-		
+
 		List<Article> articles = articleService.getArticles();
-		
+
 		model.addAttribute("articles", articles);
 		return "usr/article/list";
+	}
+
+	@RequestMapping("/usr/article/detail")
+	public String showDetail(int id, Model model) {
+
+		Article article = articleService.getArticleById(id);
+
+		model.addAttribute("article", article);
+		return "usr/article/detail";
+	}
+
+	@RequestMapping("usr/article/doDelete")
+	@ResponseBody
+	public String doDelete(int id) {
+
+		articleService.deleteArticleById(id);
+
+		return String.format("<script> alert('%d번 게시물이 삭제되었습니다.'); location.replace('/usr/article/list')</script>", id);
+	}
+	
+	@RequestMapping("usr/article/doModify")
+	@ResponseBody
+	public String doModify(Model model, int id, String title, String body) {
+
+		articleService.modifyArticleById(id, title, body);
+
+		return String.format("<script> alert('%d번 게시물이 수정되었습니다.'); location.replace('/usr/article/detail?id=%d')</script>", id, id);
 	}
 }
