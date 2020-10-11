@@ -20,10 +20,11 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
+	
 	@RequestMapping("/usr/article/list")
-	public String showList(Model model) {
+	public String showList(Model model, @RequestParam Map<String, Object> param) {
 
-		List<Article> articles = articleService.getArticles();
+		List<Article> articles = articleService.getArticles(param);
 
 		model.addAttribute("articles", articles);
 		return "usr/article/list";

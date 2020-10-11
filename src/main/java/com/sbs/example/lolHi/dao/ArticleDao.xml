@@ -5,8 +5,12 @@
 <mapper namespace="com.sbs.example.lolHi.dao.ArticleDao">
 
 	<select id="getArticles" resultType="Article">
-		SELECT * FROM article order
-		by id desc
+		SELECT * FROM article
+		order by id desc
+		<if test="limitFrom != null and limitTake != null">
+		LIMIT #{limitFrom}, #{limitTake}
+		</if>
+		
 	</select>
 
 	<select id="getArticleById" resultType="Article">
