@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sbs.example.lolHi.dao.ArticleDao;
 import com.sbs.example.lolHi.dto.Article;
 import com.sbs.example.lolHi.service.ArticleService;
 
@@ -27,6 +28,7 @@ public class ArticleController {
 		model.addAttribute("articles", articles);
 		return "usr/article/list";
 	}
+	
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(int id, Model model) {
@@ -44,6 +46,15 @@ public class ArticleController {
 		articleService.deleteArticleById(id);
 
 		return String.format("<script> alert('%d번 게시물이 삭제되었습니다.'); location.replace('/usr/article/list')</script>", id);
+	}
+	
+	@RequestMapping("usr/article/modify")
+	public String showModify(Model model, int id) {
+		
+		Article article = articleService.getArticleById(id);
+
+		model.addAttribute("article", article);
+		return "usr/article/modify";
 	}
 	
 	@RequestMapping("usr/article/doModify")
