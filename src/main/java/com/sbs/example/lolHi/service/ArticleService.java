@@ -1,12 +1,15 @@
 package com.sbs.example.lolHi.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sbs.example.lolHi.dao.ArticleDao;
 import com.sbs.example.lolHi.dto.Article;
+import com.sbs.example.lolHi.util.Util;
+
 
 @Service
 public class ArticleService {
@@ -28,6 +31,15 @@ public class ArticleService {
 
 	public void modifyArticleById(int id, String title, String body) {
 		articleDao.modifyArticleById(id, title, body);
+		
+	}
+
+	public int insertArticle(Map<String, Object> param) {
+		articleDao.insertArticle(param);
+		
+		int id = Util.getAsInt(param.get("id"));
+		
+		return id;
 		
 	}
 

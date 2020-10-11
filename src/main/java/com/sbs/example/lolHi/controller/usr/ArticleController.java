@@ -1,11 +1,13 @@
 package com.sbs.example.lolHi.controller.usr;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbs.example.lolHi.dto.Article;
@@ -46,10 +48,26 @@ public class ArticleController {
 	
 	@RequestMapping("usr/article/doModify")
 	@ResponseBody
-	public String doModify(Model model, int id, String title, String body) {
+	public String doModify(int id, String title, String body) {
 
 		articleService.modifyArticleById(id, title, body);
 
 		return String.format("<script> alert('%d번 게시물이 수정되었습니다.'); location.replace('/usr/article/detail?id=%d')</script>", id, id);
 	}
+	
+	@RequestMapping("usr/article/write")
+	public String showWrite() {
+		
+		return "usr/article/write";
+	}
+	
+	@RequestMapping("usr/article/doWrite")
+	@ResponseBody
+	public String doWrite(@RequestParam Map<String, Object> param) {
+
+		int id = articleService.insertArticle(param);
+
+		return String.format("<script> alert('%d번 게시물이 등록되었습니다.'); location.replace('/usr/article/detail?id=%d')</script>", id, id);
+	}
+	
 }
