@@ -20,7 +20,8 @@
 	수정날짜 : ${article.updateDate}<br>
 	제목 : <input type="text" maxlength="30" value="${article.title}" name = "title"> <br>
 	내용 : <input type="text" maxlength="30" value="${article.body}" name = "body"><br>
-	<input type="submit" value = "수정">
+	<input type="submit" value = "수정"><br>
+	<a href="list">리스트</a>
 </div>
 </form>
 
