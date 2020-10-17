@@ -24,3 +24,19 @@ SET regDate = NOW(),
 updateDate = NOW(),
 title = '제목2',
 `body` = '내용2';
+
+CREATE TABLE `member` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    loginId CHAR(20) NOT NULL UNIQUE,
+    loginPw CHAR(100) NOT NULL,
+    `name` CHAR(100) NOT NULL
+);
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test',
+loginPw = 'test',
+`name`= 'test';

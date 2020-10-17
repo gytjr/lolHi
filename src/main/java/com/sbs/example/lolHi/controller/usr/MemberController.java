@@ -29,4 +29,14 @@ public class MemberController {
 		
 		return String.format("<script> alert('회원가입 완료'); location.replace('/usr/article/list')</script>");
 	}
+	
+	@RequestMapping("/usr/member/login")
+	public String showLogin() {
+		return "usr/member/login";
+	}
+	
+	@RequestMapping("/usr/member/doLogin")
+	public String doLogin() {
+		return "usr/member/login";
+	}
 }

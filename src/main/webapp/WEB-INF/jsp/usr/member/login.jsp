@@ -8,12 +8,11 @@
 </head>
 <body>
 
-	<form action="doJoin" method = "post">
+	<form action="doLogin">
 		<div>ID : <input type="text" name ="loginId"><br>
 			비밀번호 : <input type="password" name = "loginPw"><br>
-			이름 : <input type="text" name = "name">
 		</div>
-		<input type="submit" value = "회원가입"><br>
+		<input type="submit" value = "로그인"><br>
 	</form>
 
 </body>
