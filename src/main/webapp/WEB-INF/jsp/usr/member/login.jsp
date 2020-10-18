@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 </head>
 <body>
 
-	<form action="doLogin">
+	<form action="doLogin" method = "post">
 		<div>ID : <input type="text" name ="loginId"><br>
 			비밀번호 : <input type="password" name = "loginPw"><br>
 		</div>

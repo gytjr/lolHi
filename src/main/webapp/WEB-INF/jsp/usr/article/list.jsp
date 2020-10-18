@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h1>게시물 목록</h1>
+	<a href="../member/login">로그인</a>
+	<a href="../member/join">회원가입</a>
 
 	<c:forEach items="${articles}" var="article">
 		<div>
