@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시물 목록</title>
-</head>
-<body>
-	<h1>게시물 목록</h1>
-	<a href="../member/login">로그인</a>
-	<a href="../member/join">회원가입</a>
+<c:set var="title" value="게시물 목록"/>
+<%@ include file="../part/head.jspf" %>
+
+	<div>${sessionScope.name}</div>
 
 	<c:forEach items="${articles}" var="article">
 		<div>
@@ -56,5 +50,4 @@
 		<c:if test="${goLastBtnNeedToShow}">
 			<a href="?page=${totalPage}">▶</a>
 		</c:if>
-</body>
-</html>
+<%@ include file="../part/foot.jspf" %>

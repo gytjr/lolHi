@@ -68,6 +68,8 @@ public class MemberController {
 			return String.format("<script> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
 		}
 		
-		return member.getLoginId();
+		session.setAttribute("loginedMemberId", member.getId());
+		
+		return String.format("<script> alert('%s님 환영합니다.'); location.replace('/usr/article/list')</script>", member.getName());
 	}
 }
