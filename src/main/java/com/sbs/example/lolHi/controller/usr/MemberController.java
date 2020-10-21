@@ -67,12 +67,11 @@ public class MemberController {
 		else if (member.getLoginPw().equals(loginPw) == false) {
 			return String.format("<script> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
 		}
-		
-<<<<<<< HEAD
+
 		session.setAttribute("loginedMemberId", member.getId());
-=======
+
 		session.setAttribute("name", member.getName());
->>>>>>> 7bcf40dfe7ba88327689f0453d79e7f94c760c6e
+
 		
 		return String.format("<script> alert('%s님 환영합니다.'); location.replace('/usr/article/list')</script>", member.getName());
 	}
