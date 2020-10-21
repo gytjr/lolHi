@@ -16,6 +16,7 @@
 		</c:if>
 		<c:if test="${not (sessionScope.loginedMemberId > 0)}">
 			<a href="/usr/member/login">로그인</a>
+			<a href="/usr/member/join">회원가입</a>
 		</c:if>
 		
 		<a href="/usr/article/write">글쓰기</a>
