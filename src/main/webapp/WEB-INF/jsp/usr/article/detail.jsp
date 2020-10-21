@@ -4,7 +4,6 @@
 <c:set var="title" value="게시물 상세페이지"/>
 <%@ include file="../part/head.jspf" %>
 
-<a href="list">리스트</a><br>
 
 번호 : ${article.id}<br>
 작성날짜 : ${article.regDate}<br>
