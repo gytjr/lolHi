@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<<<<<<< HEAD
 <c:set var="title" value="게시물 목록"/>
 <%@ include file="../part/head.jspf" %>
 
 	<div>${sessionScope.name}</div>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시물 목록</title>
+</head>
+<body>
+	<h1>게시물 목록</h1>
+	<div>${sessionScope.name}</div>
+	<a href="../member/login">로그인</a>
+	<a href="../member/join">회원가입</a>
+>>>>>>> 7bcf40dfe7ba88327689f0453d79e7f94c760c6e
 
 	<c:forEach items="${articles}" var="article">
 		<div>
