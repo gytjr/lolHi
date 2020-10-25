@@ -22,8 +22,10 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 
 		boolean isLogined = false;
+		boolean isAjax = false;
 		int loginedMemberId = 0;
 		Member loginedMember = null;
+		
 
 		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
@@ -32,6 +34,7 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 		}
 
 		request.setAttribute("isLogined", isLogined);
+		request.setAttribute("isAjax", isAjax);
 		request.setAttribute("loginedMemberId", loginedMemberId);
 		request.setAttribute("loginedMember", loginedMember);
 

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,14 +65,7 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/doDelete")
 	public String doDelete(int id, Model model, HttpServletRequest req) {
-		boolean isLogined = (boolean) req.getAttribute("isLogined");
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
-
-		if (isLogined == false) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("replaceUri", "/usr/member/login");
-			return "common/redirect";
-		}
 
 		Article article = articleService.getArticleById(id);
 		
@@ -92,7 +84,6 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/modify")
 	public String showModify(Model model, int id, HttpServletRequest req) {
-		boolean isLogined = (boolean) req.getAttribute("isLogined");
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
 		Article article = articleService.getArticleById(id);
@@ -100,12 +91,6 @@ public class ArticleController {
 		if (loginedMemberId != article.getWriterId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
-			return "common/redirect";
-		}
-
-		if (isLogined == false) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
 
@@ -115,7 +100,6 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/doModify")
 	public String doModify(int id, String title, String body, Model model, HttpServletRequest req) {
-		boolean isLogined = (boolean) req.getAttribute("isLogined");
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
 		Article article = articleService.getArticleById(id);
@@ -123,12 +107,6 @@ public class ArticleController {
 		if (loginedMemberId != article.getWriterId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
-			return "common/redirect";
-		}
-
-		if (isLogined == false) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
 
@@ -140,27 +118,13 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/write")
 	public String showWrite(HttpServletRequest req, Model model) {
-		boolean isLogined = (boolean) req.getAttribute("isLogined");
-
-		if (isLogined == false) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("replaceUri", "/usr/member/login");
-			return "common/redirect";
-		}
 
 		return "usr/article/write";
 	}
 
 	@RequestMapping("usr/article/doWrite")
 	public String doWrite(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
-		boolean isLogined = (boolean) req.getAttribute("isLogined");
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
-
-		if (isLogined == false) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("replaceUri", "/usr/member/login");
-			return "common/redirect";
-		}
 
 		param.put("memberId", loginedMemberId);
 
