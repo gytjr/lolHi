@@ -3,6 +3,7 @@ package com.sbs.example.lolHi.controller.usr;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,97 +65,84 @@ public class ArticleController {
 	}
 
 	@RequestMapping("usr/article/doDelete")
-	public String doDelete(int id, Model model, HttpSession session) {
-		int loginedMemberId = 0;
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-		}
+	public String doDelete(int id, Model model, HttpServletRequest req) {
+		boolean isLogined = (boolean) req.getAttribute("isLogined");
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
-		if (loginedMemberId == 0) {
+		if (isLogined == false) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
-			model.addAttribute("historyBack", true);
+			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
-		
+
 		Article article = articleService.getArticleById(id);
-		if(loginedMemberId == article.getWriterId()) {
-			articleService.deleteArticleById(id);
-			model.addAttribute("msg", String.format("%d번 게시물이 삭제되었습니다.", id));
-			model.addAttribute("replaceUri", "/usr/article/list");
-		} else {
+		
+		if (loginedMemberId != article.getWriterId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
+			return "common/redirect";
 		}
+
+		articleService.deleteArticleById(id);
+		model.addAttribute("msg", String.format("%d번 게시물이 삭제되었습니다.", id));
+		model.addAttribute("replaceUri", "/usr/article/list");
 
 		return "common/redirect";
 	}
 
 	@RequestMapping("usr/article/modify")
-	public String showModify(Model model, int id, HttpSession session) {
-		int loginedMemberId = 0;
+	public String showModify(Model model, int id, HttpServletRequest req) {
+		boolean isLogined = (boolean) req.getAttribute("isLogined");
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-			
-			Article article = articleService.getArticleById(id);
-			
-			if (loginedMemberId == article.getWriterId()) {
-				model.addAttribute("article", article);
-				return "usr/article/modify";
-			} else {
-				model.addAttribute("msg", "권한이 없습니다.");
-				model.addAttribute("replaceUri", "/usr/article/list");
-			}
+		Article article = articleService.getArticleById(id);
+
+		if (loginedMemberId != article.getWriterId()) {
+			model.addAttribute("msg", "권한이 없습니다.");
+			model.addAttribute("replaceUri", "/usr/article/list");
+			return "common/redirect";
 		}
 
-		if (loginedMemberId == 0) {
+		if (isLogined == false) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
 
-		return "common/redirect";
+		model.addAttribute("article", article);
+		return "usr/article/modify";	
 	}
 
 	@RequestMapping("usr/article/doModify")
-	public String doModify(int id, String title, String body, Model model, HttpSession session) {
+	public String doModify(int id, String title, String body, Model model, HttpServletRequest req) {
+		boolean isLogined = (boolean) req.getAttribute("isLogined");
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
-		int loginedMemberId = 0;
+		Article article = articleService.getArticleById(id);
 
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-			
-			Article article = articleService.getArticleById(id);
-			if (loginedMemberId == article.getWriterId()) {
-				
-				articleService.modifyArticleById(id, title, body);
-				model.addAttribute("msg", String.format("%d번 게시물이 수정되었습니다.", id));
-				model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
-			} else {
-				model.addAttribute("msg", "권한이 없습니다.");
-				model.addAttribute("replaceUri", "/usr/article/list");
-			}
-
-			
+		if (loginedMemberId != article.getWriterId()) {
+			model.addAttribute("msg", "권한이 없습니다.");
+			model.addAttribute("replaceUri", "/usr/article/list");
+			return "common/redirect";
 		}
 
-		if (loginedMemberId == 0) {
+		if (isLogined == false) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
+
+		articleService.modifyArticleById(id, title, body);
+		model.addAttribute("msg", String.format("%d번 게시물이 수정되었습니다.", id));
+		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
 		return "common/redirect";
 	}
 
 	@RequestMapping("usr/article/write")
-	public String showWrite(HttpSession session, Model model) {
-		int loginedMemberId = 0;
+	public String showWrite(HttpServletRequest req, Model model) {
+		boolean isLogined = (boolean) req.getAttribute("isLogined");
 
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-		}
-
-		if (loginedMemberId == 0) {
+		if (isLogined == false) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
@@ -164,19 +152,16 @@ public class ArticleController {
 	}
 
 	@RequestMapping("usr/article/doWrite")
-	public String doWrite(@RequestParam Map<String, Object> param, Model model,HttpSession session) {
-		int loginedMemberId = 0;
+	public String doWrite(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
+		boolean isLogined = (boolean) req.getAttribute("isLogined");
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-		}
-
-		if (loginedMemberId == 0) {
+		if (isLogined == false) {
 			model.addAttribute("msg", "로그인 후 이용해주세요");
 			model.addAttribute("replaceUri", "/usr/member/login");
 			return "common/redirect";
 		}
-		
+
 		param.put("memberId", loginedMemberId);
 
 		int id = articleService.insertArticle(param);

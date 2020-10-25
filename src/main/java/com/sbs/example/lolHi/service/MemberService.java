@@ -31,6 +31,12 @@ public class MemberService {
 		}
 		return false;
 	}
+
+
+	public Member getMemberById(int loginedMemberId) {
+		
+		return memberDao.getMemberById(loginedMemberId);
+	}
 	
 	
 }

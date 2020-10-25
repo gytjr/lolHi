@@ -12,4 +12,6 @@ public interface MemberDao {
 	void insertMember(Map<String, Object> param);
 
 	Member getMemberByLoginId(@Param("loginId") String loginId);
+
+	Member getMemberById(int loginedMemberId);
 }
