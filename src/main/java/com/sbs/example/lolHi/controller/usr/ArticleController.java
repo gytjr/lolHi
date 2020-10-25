@@ -41,7 +41,7 @@ public class ArticleController {
 
 		// 여기서 설정안하면 서비스에서 결정
 		param.put("itemsCountInAPage", itemsCountInAPage);
-		List<Article> articles = articleService.getArticles(param);
+		List<Article> articles = articleService.getForPrintArticles(param);
 
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("totalPage", totalPage);

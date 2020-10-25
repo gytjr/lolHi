@@ -8,6 +8,7 @@
 번호 : ${article.id}<br>
 작성날짜 : ${article.regDate}<br>
 수정날짜 : ${article.updateDate}<br>
+작성자 : ${article.extra.writer}<br>
 제목 : ${article.title}<br>
 내용 : ${article. body}<br>
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="doDelete?id=${article.id}">삭제</a>

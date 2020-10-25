@@ -37,3 +37,10 @@ CREATE TABLE `member` (
     loginPw CHAR(100) NOT NULL,
     `name` CHAR(100) NOT NULL
 );
+
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test',
+loginPw = 'test',
+`name` = 'asdf';
