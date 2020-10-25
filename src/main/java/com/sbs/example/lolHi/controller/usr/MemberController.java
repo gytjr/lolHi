@@ -2,6 +2,7 @@ package com.sbs.example.lolHi.controller.usr;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,19 +84,39 @@ public class MemberController {
 		return "common/redirect";
 	}
 	
-	@RequestMapping("/usr/member/doLogout")
-	public String doLogout(HttpSession session, Model model) {
-		int loginedMemberId = 0;
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-		}
-
-		if (loginedMemberId == 0) {
-			model.addAttribute("msg", "로그인 후 이용해주세요");
+	@RequestMapping("/usr/member/modify")
+	public String showModify(HttpServletRequest req, Model model) {
+		
+		return "usr/member/modify";
+	}
+	
+	@RequestMapping("/usr/member/doModify")
+	public String doModify(HttpServletRequest req, Model model,@RequestParam Map<String, Object> param) {
+		int loginedMemberId = (int)req.getAttribute("loginedMemberId");
+		
+		String name = Util.getAsStr(param.get("name"), "");
+		
+		if(name.length() == 0) {
+			model.addAttribute("msg", "수정할 이름을 입력해주세요");
 			model.addAttribute("historyBack", true);
+			
 			return "common/redirect";
 		}
 		
+		param.put("id", loginedMemberId);
+		//해킹방지
+		param.remove("loginId");
+		param.remove("loginPw");
+		
+		memberService.modifyMemberById(param);
+		
+		model.addAttribute("msg", "수정완료");
+		model.addAttribute("replaceUri", "/usr/article/list");
+		return "common/redirect";
+	}
+	
+	@RequestMapping("/usr/member/doLogout")
+	public String doLogout(HttpSession session, Model model) {
 		session.removeAttribute("loginedMemberId");
 		
 		model.addAttribute("replaceUri", "/usr/article/list");

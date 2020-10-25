@@ -69,7 +69,7 @@ public class ArticleController {
 
 		Article article = articleService.getArticleById(id);
 		
-		if (loginedMemberId != article.getWriterId()) {
+		if (loginedMemberId != article.getMemberId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";
@@ -88,7 +88,7 @@ public class ArticleController {
 
 		Article article = articleService.getArticleById(id);
 
-		if (loginedMemberId != article.getWriterId()) {
+		if (loginedMemberId != article.getMemberId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";
@@ -102,9 +102,23 @@ public class ArticleController {
 	public String doModify(int id, String title, String body, Model model, HttpServletRequest req) {
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 
+		if (title.length() == 0) {
+			model.addAttribute("msg", "수정할 제목을 입력해주세요");
+			model.addAttribute("historyBack", true);
+			
+			return "common/redirect";
+		}
+		
+		if (body.length() == 0) {
+			model.addAttribute("msg", "수정할 내용을 입력해주세요");
+			model.addAttribute("historyBack", true);
+			
+			return "common/redirect";
+		}
+		
 		Article article = articleService.getArticleById(id);
 
-		if (loginedMemberId != article.getWriterId()) {
+		if (loginedMemberId != article.getMemberId()) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";
@@ -125,6 +139,23 @@ public class ArticleController {
 	@RequestMapping("usr/article/doWrite")
 	public String doWrite(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+		
+		String title = Util.getAsStr(param.get("title"), "");
+		String body = Util.getAsStr(param.get("body"), "");
+		
+		if (title.length() == 0) {
+			model.addAttribute("msg", "제목을 입력해주세요");
+			model.addAttribute("historyBack", true);
+			
+			return "common/redirect";
+		}
+		
+		if (body.length() == 0) {
+			model.addAttribute("msg", "내용을 입력해주세요");
+			model.addAttribute("historyBack", true);
+			
+			return "common/redirect";
+		}
 
 		param.put("memberId", loginedMemberId);
 

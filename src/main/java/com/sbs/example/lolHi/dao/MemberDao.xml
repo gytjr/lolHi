@@ -29,6 +29,16 @@
 		select * from `member` where Id = #{Id}
 	</select>
 	
+	<update id="modifyMemberById" parameterType="Member">
+		update `member`
+		<set>
+			updateDate = now(),
+			<if test="name != null">
+				name = #{name},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
 	
 
 </mapper>
