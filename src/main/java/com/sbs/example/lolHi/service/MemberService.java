@@ -11,7 +11,7 @@ import com.sbs.example.lolHi.dto.Member;
 @Service
 public class MemberService {
 	@Autowired
-	MemberDao memberDao;
+	private MemberDao memberDao;
 
 	public void insertMember(Map<String, Object> param) {
 		 memberDao.insertMember(param);

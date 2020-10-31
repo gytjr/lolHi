@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sbs.example.lolHi.dto.Article;
 import com.sbs.example.lolHi.dto.ArticleReply;
 import com.sbs.example.lolHi.service.ArticleService;
+import com.sbs.example.lolHi.service.ReplyService;
 import com.sbs.example.lolHi.util.Util;
 
 @Controller
@@ -21,6 +22,8 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private ReplyService replyService;
 
 	@RequestMapping("/usr/article/list")
 	public String showList(Model model, @RequestParam Map<String, Object> param) {
@@ -60,7 +63,7 @@ public class ArticleController {
 
 		Article article = articleService.getArticleById(id);
 		
-		List<ArticleReply> articleReplies = articleService.getForPrintArticleReplies(article.getId());
+		List<ArticleReply> articleReplies = replyService.getForPrintArticleReplies(article.getId());
 		
 		
 		model.addAttribute("article", article);
@@ -167,30 +170,6 @@ public class ArticleController {
 		int id = articleService.insertArticle(param);
 
 		model.addAttribute("msg", String.format("%d번 게시물이 등록되었습니다.", id));
-		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
-
-		return "common/redirect";
-	}
-	
-	@RequestMapping("usr/article/doWriteReply")
-	public String doWriteReply(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
-		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
-		
-		String body = Util.getAsStr(param.get("body"), "");
-		
-		if (body.length() == 0) {
-			model.addAttribute("msg", "내용을 입력해주세요");
-			model.addAttribute("historyBack", true);
-			
-			return "common/redirect";
-		}
-
-		param.put("memberId", loginedMemberId);
-
-		articleService.writeArticleReply(param);
-		int id =  Util.getAsInt(param.get("articleId"));
-		
-		model.addAttribute("msg", String.format("댓글이 등록되었습니다."));
 		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
 
 		return "common/redirect";

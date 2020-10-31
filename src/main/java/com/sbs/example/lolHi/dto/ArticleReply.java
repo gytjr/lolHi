@@ -12,9 +12,10 @@ import lombok.NoArgsConstructor;
 public class ArticleReply {
 	private int id;
 	private String regDate;
-	private int articleId;
+	private int relId;
 	private int memberId;
 	private String body;
+	private String relTypeCode;
 	
 	private Map<String, Object> extra;
 }

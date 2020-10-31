@@ -10,16 +10,18 @@
 수정날짜 : ${article.updateDate}<br>
 작성자 : ${article.extra.writer}<br>
 제목 : ${article.title}<br>
-내용 : ${article. body}<br>
+내용 : ${article.body}<br>
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="doDelete?id=${article.id}">삭제</a>
 	<a href="modify?id=${article.id}">수정</a>
 
 
-<form action ='doWriteReply' method = 'post'>
-	<input type="hidden" name= "articleId" value = "${article.id}">
+<form action ='usr/reply/write' method = 'post'>
+	<input type="hidden" name= "relId" value = "${article.id}">
+	<input type="hidden" name= "relTypeCode" value = "relTypeCode">
 	<h2>댓글 작성</h2>
-	내용 : <input type ="text" placeholder="댓글 내용을 입력해주세요" name="body"><br>
-	<br>
+	<div>
+	<textarea rows = "8" placeholder="댓글 내용을 입력해주세요" name="body"></textarea>
+	</div>
 	<input type = "submit" value = "작성">
 </form>
 

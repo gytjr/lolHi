@@ -67,14 +67,4 @@ public class ArticleService {
 		return articleDao.getTotalCount();
 	}
 
-	public void writeArticleReply(Map<String, Object> param) {
-		articleDao.writeArticleReply(param);
-	}
-
-	public List<ArticleReply> getForPrintArticleReplies(int articleId) {
-		
-		
-		return articleDao.getForPrintArticleReplies(articleId);
-	}
-
 }
