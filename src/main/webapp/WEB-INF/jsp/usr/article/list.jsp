@@ -5,10 +5,10 @@
 <c:set var="title" value="게시물 목록"/>
 <%@ include file="../part/head.jspf" %>
 
-	
+	총 게시물 수 : ${totalCount}<br><br>
 	<c:forEach items="${articles}" var="article">
 		<div>
-			번호 : ${article.id}<br> 
+			번호 : ${article.id} <br>
 			제목 : <a href="detail?id=${article.id}">${article.title}</a><br>
 			내용 : ${article.body}<br> 
 			작성자 : ${article.extra.writer}<br>

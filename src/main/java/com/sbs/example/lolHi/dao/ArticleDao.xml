@@ -8,9 +8,12 @@
 		SELECT A.*,
 		M.name AS extra__writer
 		FROM article AS A
-		INNER JOIN member
-		AS M
+		INNER JOIN member AS M
 		ON A.memberId = M.id
+		where 1
+		<if test="searchKeyword != null">
+		and A.title like CONCAT('%', #{searchKeyword} ,'%')
+		</if>
 		order by A.id desc
 		<if test="limitFrom != null and limitTake != null">
 			LIMIT #{limitFrom}, #{limitTake}
@@ -65,7 +68,12 @@
 	
 
 	<select id="getTotalCount" resultType="int">
-		select count(*) from article
+		select count(*)
+		from article
+		where 1
+		<if test="searchKeyword != null">
+		and title like CONCAT('%', #{searchKeyword} ,'%')
+		</if>
 	</select>
 	
 	<resultMap type="Article" id="article">

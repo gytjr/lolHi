@@ -17,7 +17,7 @@ public interface ArticleDao {
 	void deleteArticleById(@Param("id") int id);
 	void modifyArticleById(@Param("id") int id,@Param("title") String title, @Param("body") String body);
 	void insertArticle(Map<String, Object> param);
-	int getTotalCount();
+	int getTotalCount(Map<String, Object> param);
 	void writeArticleReply(Map<String, Object> param);
 	List<Reply> getForPrintArticleReplies(int articleId);
 }
