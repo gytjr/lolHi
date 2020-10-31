@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.sbs.example.lolHi.dto.Article;
+import com.sbs.example.lolHi.dto.ArticleReply;
 
 @Mapper
 public interface ArticleDao {
@@ -17,4 +18,6 @@ public interface ArticleDao {
 	void modifyArticleById(@Param("id") int id,@Param("title") String title, @Param("body") String body);
 	void insertArticle(Map<String, Object> param);
 	int getTotalCount();
+	void writeArticleReply(Map<String, Object> param);
+	List<ArticleReply> getForPrintArticleReplies(int articleId);
 }

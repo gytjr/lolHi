@@ -14,4 +14,19 @@
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="doDelete?id=${article.id}">삭제</a>
 	<a href="modify?id=${article.id}">수정</a>
 
+
+<form action ='doWriteReply' method = 'post'>
+	<input type="hidden" name= "articleId" value = "${article.id}">
+	<h2>댓글 작성</h2>
+	내용 : <input type ="text" placeholder="댓글 내용을 입력해주세요" name="body"><br>
+	<br>
+	<input type = "submit" value = "작성">
+</form>
+
+<h2>댓글</h2>
+<c:forEach items= "${articleReplies}" var = "articleReply">
+작성자 : ${articleReply.extra.writer}<br>
+내용 : ${articleReply.body}<br>
+작성날짜 :${articleReply.regDate}<hr>
+</c:forEach>
 <%@ include file="../part/foot.jspf" %>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbs.example.lolHi.dto.Article;
+import com.sbs.example.lolHi.dto.ArticleReply;
 import com.sbs.example.lolHi.service.ArticleService;
 import com.sbs.example.lolHi.util.Util;
 
@@ -58,8 +59,12 @@ public class ArticleController {
 	public String showDetail(int id, Model model) {
 
 		Article article = articleService.getArticleById(id);
-
+		
+		List<ArticleReply> articleReplies = articleService.getForPrintArticleReplies(article.getId());
+		
+		
 		model.addAttribute("article", article);
+		model.addAttribute("articleReplies", articleReplies);
 		return "usr/article/detail";
 	}
 
@@ -166,5 +171,30 @@ public class ArticleController {
 
 		return "common/redirect";
 	}
+	
+	@RequestMapping("usr/article/doWriteReply")
+	public String doWriteReply(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
+		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+		
+		String body = Util.getAsStr(param.get("body"), "");
+		
+		if (body.length() == 0) {
+			model.addAttribute("msg", "내용을 입력해주세요");
+			model.addAttribute("historyBack", true);
+			
+			return "common/redirect";
+		}
+
+		param.put("memberId", loginedMemberId);
+
+		articleService.writeArticleReply(param);
+		int id =  Util.getAsInt(param.get("articleId"));
+		
+		model.addAttribute("msg", String.format("댓글이 등록되었습니다."));
+		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
+
+		return "common/redirect";
+	}
+
 
 }
