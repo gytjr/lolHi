@@ -15,9 +15,9 @@
 	<a href="modify?id=${article.id}">수정</a>
 
 
-<form action ='usr/reply/write' method = 'post'>
+<form action ='../reply/doWrite' method = 'post'>
 	<input type="hidden" name= "relId" value = "${article.id}">
-	<input type="hidden" name= "relTypeCode" value = "relTypeCode">
+	<input type="hidden" name= "relTypeCode" value = "article">
 	<h2>댓글 작성</h2>
 	<div>
 	<textarea rows = "8" placeholder="댓글 내용을 입력해주세요" name="body"></textarea>

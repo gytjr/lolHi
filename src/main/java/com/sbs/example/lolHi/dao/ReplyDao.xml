@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbs.example.lolHi.dao.ReplyDao">
 
-	<select id="getForPrintArticleReplies" resultMap="articleReply">
-		SELECT AR.*,
+	<select id="getForPrintArticleReplies" resultMap="reply">
+		SELECT R.*,
 		M.name AS extra__writer
 		FROM reply AS R
 		INNER JOIN `member` AS M
@@ -13,10 +13,11 @@
 		WHERE R.relId = #{relId}
 	</select>
 	
-	<insert id="writeArticleReply">
+	<insert id="writeReply">
 		insert into reply
 		<set>
 			regDate = now(),
+			updateDate = now(),
 			<if test="body != null">
 				`body` = #{body},
 			</if>
@@ -32,7 +33,7 @@
 		</set>
 	</insert>
 	
-	<resultMap type="ArticleReply" id="articleReply">
+	<resultMap type="Reply" id="reply">
 		<id property="id" column="id" />
 		<id property="regDate" column="regDate" />
 		<id property="body" column="body" />

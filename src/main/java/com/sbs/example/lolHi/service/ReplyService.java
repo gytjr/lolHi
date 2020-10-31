@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sbs.example.lolHi.dao.ReplyDao;
-import com.sbs.example.lolHi.dto.ArticleReply;
+import com.sbs.example.lolHi.dto.Reply;
 
 
 @Service
@@ -17,13 +17,12 @@ public class ReplyService {
 	private ReplyDao ReplyDao;
 	
 
-	public void writeArticleReply(Map<String, Object> param) {
-		ReplyDao.writeArticleReply(param);
+	public void writeReply(Map<String, Object> param) {
+		ReplyDao.writeReply(param);
 	}
 
-	public List<ArticleReply> getForPrintArticleReplies(int articleId) {
-		
-		
+	public List<Reply> getForPrintArticleReplies(int articleId) {
+
 		return ReplyDao.getForPrintArticleReplies(articleId);
 	}
 

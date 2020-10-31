@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleReply {
+public class Reply {
 	private int id;
 	private String regDate;
-	private int relId;
+	private String updateDate;
 	private int memberId;
+	private int relId;
 	private String body;
 	private String relTypeCode;
 	

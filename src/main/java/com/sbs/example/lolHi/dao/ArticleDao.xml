@@ -26,16 +26,6 @@
 		ON A.memberId = M.id
 		WHERE A.id = #{id}
 	</select>
-	
-	<select id="getForPrintArticleReplies" resultMap="articleReply">
-		SELECT AR.*,
-		M.name AS extra__writer
-		FROM articleReply AS AR
-		INNER JOIN `member` AS M
-		ON AR.memberId = M.id
-		WHERE AR.articleId = #{articleId}
-	</select>
-	
 
 	<delete id="deleteArticleById">
 		delete from article where id = #{id}
@@ -73,22 +63,6 @@
 		</set>
 	</insert>
 	
-	<insert id="writeArticleReply">
-		insert into articleReply
-		<set>
-			regDate = now(),
-			<if test="body != null">
-				`body` = #{body},
-			</if>
-			<if test="articleId != null">
-				articleId = #{articleId},
-			</if>
-			<if test="memberId != null">
-				memberId = #{memberId}
-			</if>
-		</set>
-	</insert>
-	
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from article
@@ -101,17 +75,6 @@
 		<id property="title" column="title" />
 		<id property="body" column="body" />
 		<id property="memberId" column="memberId" />
-		<association property="extra" javaType="map">
-			<id property="writer" column="extra__writer" />
-		</association>
-	</resultMap>
-	
-	<resultMap type="ArticleReply" id="articleReply">
-		<id property="id" column="id" />
-		<id property="regDate" column="regDate" />
-		<id property="body" column="body" />
-		<id property="memberId" column="memberId" />
-		<id property="articleId" column="articleId" />
 		<association property="extra" javaType="map">
 			<id property="writer" column="extra__writer" />
 		</association>

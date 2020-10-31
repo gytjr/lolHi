@@ -19,7 +19,7 @@ public class ReplyController {
 	@Autowired
 	private ReplyService replyService;
 
-	@RequestMapping("usr/reply/write")
+	@RequestMapping("usr/reply/doWrite")
 	public String doWriteReply(@RequestParam Map<String, Object> param, Model model, HttpServletRequest req) {
 		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
 		
@@ -34,11 +34,12 @@ public class ReplyController {
 
 		param.put("memberId", loginedMemberId);
 
-		replyService.writeArticleReply(param);
-		int id =  Util.getAsInt(param.get("articleId"));
+		replyService.writeReply(param);
+		String relTypeCode = (String)param.get("relTypeCode");
+		int relId =  Util.getAsInt(param.get("relId"));
 		
 		model.addAttribute("msg", String.format("댓글이 등록되었습니다."));
-		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
+		model.addAttribute("replaceUri", String.format("/usr/%s/detail?id=%d", relTypeCode, relId));
 
 		return "common/redirect";
 	}

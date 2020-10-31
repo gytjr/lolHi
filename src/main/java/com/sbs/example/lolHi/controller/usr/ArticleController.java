@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbs.example.lolHi.dto.Article;
-import com.sbs.example.lolHi.dto.ArticleReply;
+import com.sbs.example.lolHi.dto.Reply;
 import com.sbs.example.lolHi.service.ArticleService;
 import com.sbs.example.lolHi.service.ReplyService;
 import com.sbs.example.lolHi.util.Util;
@@ -63,7 +63,7 @@ public class ArticleController {
 
 		Article article = articleService.getArticleById(id);
 		
-		List<ArticleReply> articleReplies = replyService.getForPrintArticleReplies(article.getId());
+		List<Reply> articleReplies = replyService.getForPrintArticleReplies(article.getId());
 		
 		
 		model.addAttribute("article", article);

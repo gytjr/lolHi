@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sbs.example.lolHi.dao.ArticleDao;
 import com.sbs.example.lolHi.dto.Article;
-import com.sbs.example.lolHi.dto.ArticleReply;
+import com.sbs.example.lolHi.dto.Reply;
 import com.sbs.example.lolHi.util.Util;
 
 

@@ -4,14 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
-import com.sbs.example.lolHi.dto.Article;
-import com.sbs.example.lolHi.dto.ArticleReply;
+import com.sbs.example.lolHi.dto.Reply;
 
 @Mapper
 public interface ReplyDao {
-	
-	void writeArticleReply(Map<String, Object> param);
-	List<ArticleReply> getForPrintArticleReplies(int articleId);
+	void writeReply(Map<String, Object> param);
+	List<Reply> getForPrintArticleReplies(int articleId);
 }
