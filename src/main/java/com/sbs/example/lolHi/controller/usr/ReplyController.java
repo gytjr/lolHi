@@ -36,12 +36,13 @@ public class ReplyController {
 
 		param.put("memberId", loginedMemberId);
 
-		replyService.writeReply(param);
+		int replyId = replyService.writeReply(param);
+		
 		String relTypeCode = (String)param.get("relTypeCode");
 		int relId =  Util.getAsInt(param.get("relId"));
 		
 		model.addAttribute("msg", String.format("댓글이 등록되었습니다."));
-		model.addAttribute("replaceUri", String.format("/usr/%s/detail?id=%d", relTypeCode, relId));
+		model.addAttribute("replaceUri", String.format("/usr/%s/detail?id=%d&replyId=%d", relTypeCode, relId, replyId));
 
 		return "common/redirect";
 	}

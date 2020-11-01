@@ -9,7 +9,7 @@ import com.sbs.example.lolHi.dto.Reply;
 
 @Mapper
 public interface ReplyDao {
-	void writeReply(Map<String, Object> param);
+	int writeReply(Map<String, Object> param);
 	List<Reply> getForPrintArticleReplies(int articleId);
 	void deleteReplyById(int id);
 	Reply getReplyById(int id);

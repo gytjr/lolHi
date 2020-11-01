@@ -3,7 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="title" value="게시물 상세페이지"/>
 <%@ include file="../part/head.jspf" %>
+<script>
 
+var $addedReply = $('div[data-id="' + ${param.replyId} + '"]');
+console.log($addedReply);
+$addedReply.addClass("a");
+
+
+</script>
 
 번호 : ${article.id}<br>
 작성날짜 : ${article.regDate}<br>

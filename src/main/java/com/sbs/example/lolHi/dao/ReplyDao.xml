@@ -14,7 +14,8 @@
 		WHERE R.relId = #{relId}
 	</select>
 
-	<insert id="writeReply">
+	<insert id="writeReply" useGeneratedKeys="true"
+		keyProperty="id">
 		insert into reply
 		<set>
 			regDate = now(),
