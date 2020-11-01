@@ -35,4 +35,8 @@ public class ReplyService {
 		replyDao.deleteReplyById(id);
 	}
 
+	public void modifyReplyById(Map<String, Object> param) {
+		replyDao.modifyReplyById(param);		
+	}
+
 }

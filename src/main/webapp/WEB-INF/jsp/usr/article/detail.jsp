@@ -27,10 +27,12 @@
 
 <h2>댓글</h2>
 <c:forEach items= "${articleReplies}" var = "articleReply">
+<div data-id="${articleReply.id}">
 작성자 : ${articleReply.extra.writer}<br>
 내용 : ${articleReply.body}<br>
 작성날짜 :${articleReply.regDate}
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${articleReply.id}">삭제</a>
 	<a href="../reply/modify?id=${articleReply.id}">수정</a><hr>
+</div>
 </c:forEach>
 <%@ include file="../part/foot.jspf" %>

@@ -11,6 +11,7 @@ import com.sbs.example.lolHi.dto.Reply;
 public interface ReplyDao {
 	void writeReply(Map<String, Object> param);
 	List<Reply> getForPrintArticleReplies(int articleId);
-	Reply getReplyById(int id);
 	void deleteReplyById(int id);
+	Reply getReplyById(int id);
+	void modifyReplyById(Map<String, Object> param);
 }
