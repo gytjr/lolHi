@@ -14,16 +14,25 @@ import com.sbs.example.lolHi.dto.Reply;
 public class ReplyService {
 	
 	@Autowired
-	private ReplyDao ReplyDao;
+	private ReplyDao replyDao;
 	
 
 	public void writeReply(Map<String, Object> param) {
-		ReplyDao.writeReply(param);
+		replyDao.writeReply(param);
 	}
 
 	public List<Reply> getForPrintArticleReplies(int articleId) {
 
-		return ReplyDao.getForPrintArticleReplies(articleId);
+		return replyDao.getForPrintArticleReplies(articleId);
+	}
+
+	public Reply getReplyById(int id) {
+		
+		return replyDao.getReplyById(id);
+	}
+
+	public void deleteReplyById(int id) {
+		replyDao.deleteReplyById(id);
 	}
 
 }

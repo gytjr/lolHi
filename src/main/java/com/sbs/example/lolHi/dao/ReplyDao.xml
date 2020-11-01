@@ -9,10 +9,11 @@
 		M.name AS extra__writer
 		FROM reply AS R
 		INNER JOIN `member` AS M
-		ON R.memberId = M.id
+		ON
+		R.memberId = M.id
 		WHERE R.relId = #{relId}
 	</select>
-	
+
 	<insert id="writeReply">
 		insert into reply
 		<set>
@@ -32,7 +33,17 @@
 			</if>
 		</set>
 	</insert>
-	
+
+	<select id="getReplyById" resultType="Reply">
+		SELECT * FROM reply
+		WHERE id
+		= #{id}
+	</select>
+
+	<delete id="deleteReplyById">
+		delete from reply where id = #{id}
+	</delete>
+
 	<resultMap type="Reply" id="reply">
 		<id property="id" column="id" />
 		<id property="regDate" column="regDate" />
