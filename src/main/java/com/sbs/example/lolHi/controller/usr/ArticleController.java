@@ -66,7 +66,7 @@ public class ArticleController {
 		List<Reply> articleReplies = replyService.getForPrintArticleReplies(article.getId());
 		
 		if( listUrl == null) {
-			listUrl = "";
+			listUrl = "/usr/article/list";
 		}
 		
 		model.addAttribute("article", article);
