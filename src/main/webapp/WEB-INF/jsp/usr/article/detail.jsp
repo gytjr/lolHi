@@ -24,6 +24,7 @@ $addedReply.addClass("a");
 
 
 <form action ='../reply/doWrite' method = 'post'>
+	<input type="hidden" name= "redirectUrl" value = "${currentUri}">
 	<input type="hidden" name= "relId" value = "${article.id}">
 	<input type="hidden" name= "relTypeCode" value = "article">
 	<h2>댓글 작성</h2>
