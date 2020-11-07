@@ -11,6 +11,26 @@
 <title>${title}</title>
 </head>
 <body>
+	<script>
+		var param = {};
+	</script>
+	<c:forEach var="pageParameter" items ="${param}">
+		<script>
+			param["$pageParameter.key"] = "${pageParameter.value}";
+		</script>
+	</c:forEach>
+	<script>
+		if (!param.jsAction) {
+				param.jsAction = '';
+			}
+
+		var jsActions = param.jsAction.split(',');
+
+		for ( var key in jsActions) {
+			var jsActionFuncName = jsActions[key];
+			}
+	</script>
+	
 	<h1>${title}</h1>
 
 	<div>

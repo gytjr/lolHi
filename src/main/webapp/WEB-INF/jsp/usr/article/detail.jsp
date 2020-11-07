@@ -19,8 +19,10 @@ $addedReply.addClass("a");
 제목 : ${article.title}<br>
 내용 : ${article.body}<br>
 <a href="${listUrl}">리스트</a>
+<c:if test="${article.memberId == loginedMemberId}">
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="doDelete?id=${article.id}">삭제</a>
 	<a href="modify?id=${article.id}">수정</a>
+</c:if>
 
 
 <form action ='../reply/doWrite' method = 'post'>
@@ -31,7 +33,7 @@ $addedReply.addClass("a");
 	<div>
 	<textarea rows = "8" placeholder="댓글 내용을 입력해주세요" name="body"></textarea>
 	</div>
-	<input type = "submit" value = "작성">
+	<input type="submit" value="작성">
 </form>
 
 <h2>댓글</h2>
@@ -40,8 +42,12 @@ $addedReply.addClass("a");
 작성자 : ${articleReply.extra.writer}<br>
 내용 : ${articleReply.body}<br>
 작성날짜 :${articleReply.regDate}
+<c:if test="${articleReply.memberId == loginedMemberId}">
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">삭제</a>
-	<a href="../reply/modify?id=${articleReply.id}">수정</a><hr>
+	<a href="../reply/modify?id=${articleReply.id}">수정</a>
+</c:if>
+<hr>
+
 </div>
 </c:forEach>
 <%@ include file="../part/foot.jspf" %>
