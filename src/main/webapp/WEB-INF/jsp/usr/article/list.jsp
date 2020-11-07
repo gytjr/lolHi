@@ -24,9 +24,11 @@
 		<br>
 		작성자 : ${article.extra.writer}
 		<br>
+		<c:if test="${article.memberId == loginedMemberId}">
 		<a onclick="if(confirm('삭제하시겠습니까?') == false) return false;"
 			href="doDelete?id=${article.id}">삭제</a>
 		<a href="modify?id=${article.id}">수정</a>
+		</c:if>
 		<hr>
 	</div>
 </c:forEach>
