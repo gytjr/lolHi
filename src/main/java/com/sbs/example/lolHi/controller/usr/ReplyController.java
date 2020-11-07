@@ -38,11 +38,12 @@ public class ReplyController {
 
 		int replyId = replyService.writeReply(param);
 		
+		System.out.println(replyId);
 		String relTypeCode = (String)param.get("relTypeCode");
 		int relId =  Util.getAsInt(param.get("relId"));
 		
 		if(redirectUrl == null || redirectUrl.length() == 0) {
-			redirectUrl = String.format("/usr/%s/detail?id=%d&replyId=%d", relTypeCode, relId, replyId);
+			redirectUrl = String.format("/usr/%s/detail?id=%d", relTypeCode, relId);
 		}
 		
 		model.addAttribute("msg", String.format("댓글이 등록되었습니다."));

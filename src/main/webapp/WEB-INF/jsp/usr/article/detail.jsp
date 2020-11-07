@@ -44,7 +44,7 @@ $addedReply.addClass("a");
 작성날짜 :${articleReply.regDate}
 <c:if test="${articleReply.memberId == loginedMemberId}">
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">삭제</a>
-	<a href="../reply/modify?id=${articleReply.id}">수정</a>
+	<a href="../reply/modify?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">수정</a>
 </c:if>
 <hr>
 

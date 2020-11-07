@@ -8,6 +8,7 @@
 <form action="doModify" method="post">
 
 	<div>
+	<input type="hidden" name= "redirectUrl" value = "${param.redirectUrl}">
 		<input type="hidden" name="id" value="${reply.id}"> <input
 			type="hidden" name="updateDate" value="now()"> 
 		번호 : ${reply.id}
@@ -21,7 +22,7 @@
 		<br>
 		<input type="submit" value="수정">
 		<br>
-		<a href="list">리스트</a>
+		<a href="${param.redirectUrl}">돌아가기</a>
 	</div>
 </form>
 
