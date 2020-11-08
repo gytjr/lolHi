@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbs.example.lolHi.dto.Article;
+import com.sbs.example.lolHi.dto.Board;
 import com.sbs.example.lolHi.dto.Member;
 import com.sbs.example.lolHi.dto.Reply;
 import com.sbs.example.lolHi.service.ArticleService;
@@ -26,9 +28,18 @@ public class ArticleController {
 	@Autowired
 	private ReplyService replyService;
 
-	@RequestMapping("/usr/article/list")
-	public String showList(HttpServletRequest req, Model model, @RequestParam Map<String, Object> param) {
+	@RequestMapping("/usr/article-{boardCode}/list")
+	public String showList(HttpServletRequest req, Model model, @RequestParam Map<String, Object> param, @PathVariable("boardCode") String boardCode) {
 		Member loginedMember = (Member)req.getAttribute("loginedMember");
+		Board board = articleService.getBoardByCode(boardCode);
+		
+		if(board==null) {
+			model.addAttribute("msg", "존제하지 않는 게시판 입니다.");
+			model.addAttribute("historyBack", true);
+			return "common/redirect";
+		}
+		
+		param.put("boardId", board.getId());
 		
 		int totalCount = articleService.getTotalCount(param);
 		int itemsCountInAPage = 10;
@@ -49,6 +60,8 @@ public class ArticleController {
 		List<Article> articles = articleService.getForPrintArticles(loginedMember, param);
 		// 여기서 설정안하면 서비스에서 결정
 		param.put("itemsCountInAPage", itemsCountInAPage);
+		
+		model.addAttribute("board", board);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("pageMenuArmSize", pageMenuArmSize);
