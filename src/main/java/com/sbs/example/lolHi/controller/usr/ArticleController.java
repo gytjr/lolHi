@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbs.example.lolHi.dto.Article;
+import com.sbs.example.lolHi.dto.Member;
 import com.sbs.example.lolHi.dto.Reply;
 import com.sbs.example.lolHi.service.ArticleService;
 import com.sbs.example.lolHi.service.ReplyService;
@@ -26,7 +27,9 @@ public class ArticleController {
 	private ReplyService replyService;
 
 	@RequestMapping("/usr/article/list")
-	public String showList(Model model, @RequestParam Map<String, Object> param) {
+	public String showList(HttpServletRequest req, Model model, @RequestParam Map<String, Object> param) {
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
+		
 		int totalCount = articleService.getTotalCount(param);
 		int itemsCountInAPage = 10;
 		int totalPage = (int) Math.ceil(totalCount / (double) itemsCountInAPage);
@@ -43,10 +46,9 @@ public class ArticleController {
 			pageMenuEnd = totalPage;
 		}
 
+		List<Article> articles = articleService.getForPrintArticles(loginedMember, param);
 		// 여기서 설정안하면 서비스에서 결정
 		param.put("itemsCountInAPage", itemsCountInAPage);
-		List<Article> articles = articleService.getForPrintArticles(param);
-
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("pageMenuArmSize", pageMenuArmSize);
@@ -59,11 +61,11 @@ public class ArticleController {
 	}
 
 	@RequestMapping("/usr/article/detail")
-	public String showDetail(int id, Model model, String listUrl) {
-
-		Article article = articleService.getArticleById(id);
+	public String showDetail(HttpServletRequest req,int id, Model model, String listUrl) {
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
+		Article article = articleService.getArticleById(loginedMember, id);
 		
-		List<Reply> articleReplies = replyService.getForPrintArticleReplies(article.getId());
+		List<Reply> articleReplies = replyService.getForPrintArticleReplies(loginedMember, article.getId());
 		
 		if( listUrl == null) {
 			listUrl = "/usr/article/list";
@@ -77,11 +79,11 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/doDelete")
 	public String doDelete(int id, Model model, HttpServletRequest req) {
-		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
 
-		Article article = articleService.getArticleById(id);
+		Article article = articleService.getArticleById(loginedMember, id);
 		
-		if (loginedMemberId != article.getMemberId()) {
+		if ((boolean) article.getExtra().get("actorCanDelete") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";
@@ -96,11 +98,11 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/modify")
 	public String showModify(Model model, int id, HttpServletRequest req) {
-		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
 
-		Article article = articleService.getArticleById(id);
+		Article article = articleService.getArticleById(loginedMember, id);
 
-		if (loginedMemberId != article.getMemberId()) {
+		if ((boolean) article.getExtra().get("actorCanModify") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";
@@ -112,7 +114,7 @@ public class ArticleController {
 
 	@RequestMapping("usr/article/doModify")
 	public String doModify(int id, String title, String body, Model model, HttpServletRequest req) {
-		int loginedMemberId = (int) req.getAttribute("loginedMemberId");
+		Member loginedMember = (Member)req.getAttribute("loginedMember");
 
 		if (title.length() == 0) {
 			model.addAttribute("msg", "수정할 제목을 입력해주세요");
@@ -128,9 +130,9 @@ public class ArticleController {
 			return "common/redirect";
 		}
 		
-		Article article = articleService.getArticleById(id);
+		Article article = articleService.getArticleById(loginedMember, id);
 
-		if (loginedMemberId != article.getMemberId()) {
+		if ((boolean) article.getExtra().get("actorCanModify") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
 			model.addAttribute("replaceUri", "/usr/article/list");
 			return "common/redirect";

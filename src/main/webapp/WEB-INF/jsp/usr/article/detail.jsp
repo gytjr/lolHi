@@ -19,8 +19,10 @@ $addedReply.addClass("a");
 제목 : ${article.title}<br>
 내용 : ${article.body}<br>
 <a href="${listUrl}">리스트</a>
-<c:if test="${article.memberId == loginedMemberId}">
+<c:if test="${article.extra.actorCanDelete}">
 <a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="doDelete?id=${article.id}">삭제</a>
+</c:if>
+<c:if test="${article.extra.actorCanModify}">
 	<a href="modify?id=${article.id}">수정</a>
 </c:if>
 
@@ -42,8 +44,10 @@ $addedReply.addClass("a");
 작성자 : ${articleReply.extra.writer}<br>
 내용 : ${articleReply.body}<br>
 작성날짜 :${articleReply.regDate}
-<c:if test="${articleReply.memberId == loginedMemberId}">
-<a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">삭제</a>
+<c:if test="${articleReply.extra.actorCanDelete}">
+	<a onclick="if(confirm('삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">삭제</a>
+</c:if>
+<c:if test="${articleReply.extra.actorCanModify}">
 	<a href="../reply/modify?id=${articleReply.id}&redirectUrl=${encodedCurrentUri}">수정</a>
 </c:if>
 <hr>
