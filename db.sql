@@ -79,7 +79,6 @@ memberId = 2;
 # 댓글 테이블 생성
 
 CREATE TABLE reply (
-
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
@@ -89,6 +88,27 @@ CREATE TABLE reply (
     relTypeCode CHAR(50) NOT NULL # 관련 데이터 타입
 );
 
- 
 
 SELECT * FROM reply;
+
+CREATE TABLE board (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    `name` CHAR(20) UNIQUE NOT NULL,
+    `code` CHAR(20) UNIQUE NOT NULL
+);
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '공지사항',
+`code` = 'notice';
+
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '자유',
+`code` = 'free';
+
+SELECT * FROM board;
