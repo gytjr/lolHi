@@ -83,9 +83,9 @@
 	</select>
 	
 	<select id="getBoardByCode" resultType="Board">
-		select *
-		from board
-		where `code` = #{boardCode}
+		SELECT *
+		FROM board
+		WHERE `code` = #{boardCode}
 	</select>
 	
 	<resultMap type="Article" id="article">

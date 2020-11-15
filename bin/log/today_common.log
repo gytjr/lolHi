@@ -18264,7 +18264,7 @@ javax.el.MethodNotFoundException: Method not found: class javax.servlet.jsp.el.I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-18 17:14:35 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article/list.jsp] at line [12]
+2020-10-18 17:14:35 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article-free/list.jsp] at line [12]
 
 9: </head>
 10: <body>
@@ -18455,7 +18455,7 @@ javax.el.MethodNotFoundException: Method not found: class javax.servlet.jsp.el.I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-18 17:15:31 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article/list.jsp] at line [12]
+2020-10-18 17:15:31 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article-free/list.jsp] at line [12]
 
 9: </head>
 10: <body>
@@ -18646,7 +18646,7 @@ javax.el.MethodNotFoundException: Method not found: class javax.servlet.jsp.el.I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article/list.jsp] at line [12]
+2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article-free/list.jsp] at line [12]
 
 9: </head>
 10: <body>
@@ -18837,7 +18837,7 @@ javax.el.MethodNotFoundException: Method not found: class javax.servlet.jsp.el.I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article/list.jsp] at line [12]
+2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article-free/list.jsp] at line [12]
 
 9: </head>
 10: <body>
@@ -19028,7 +19028,7 @@ javax.el.MethodNotFoundException: Method not found: class javax.servlet.jsp.el.I
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article/list.jsp] at line [12]
+2020-10-18 17:15:32 [ERROR] o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [An exception occurred processing [/WEB-INF/jsp/usr/article-free/list.jsp] at line [12]
 
 9: </head>
 10: <body>
