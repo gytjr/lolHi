@@ -73,10 +73,11 @@ public class ArticleController {
 		return "usr/article/list";
 	}
 
-	@RequestMapping("/usr/article/detail")
-	public String showDetail(HttpServletRequest req,int id, Model model, String listUrl) {
+	@RequestMapping("/usr/article-{boardCode}/detail")
+	public String showDetail(HttpServletRequest req,int id, Model model, String listUrl, @PathVariable("boardCode") String boardCode) {
 		Member loginedMember = (Member)req.getAttribute("loginedMember");
 		Article article = articleService.getArticleById(loginedMember, id);
+		Board board = articleService.getBoardByCode(boardCode);
 		
 		List<Reply> articleReplies = replyService.getForPrintArticleReplies(loginedMember, article.getId());
 		
@@ -84,6 +85,7 @@ public class ArticleController {
 			listUrl = "/usr/article-free/list";
 		}
 		
+		model.addAttribute("board", board);
 		model.addAttribute("article", article);
 		model.addAttribute("articleReplies", articleReplies);
 		model.addAttribute("listUrl", listUrl);
@@ -158,8 +160,10 @@ public class ArticleController {
 	}
 
 	@RequestMapping("usr/article-{boardCode}/write")
-	public String showWrite(HttpServletRequest req, Model model) {
-
+	public String showWrite(HttpServletRequest req, Model model, @PathVariable("boardCode") String boardCode) {
+		Board board = articleService.getBoardByCode(boardCode);
+		
+		model.addAttribute("board", board);
 		return "usr/article/write";
 	}
 

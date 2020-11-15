@@ -13,7 +13,7 @@
 	</form>
 </div>
 <c:forEach items="${articles}" var="article">
-	<c:set var = "detailUrl" value ="/usr/article/detail?id=${article.id}&listUrl=${encodedCurrentUri}" />
+	<c:set var = "detailUrl" value ="/usr/article-${board.code}/detail?id=${article.id}&listUrl=${encodedCurrentUri}" />
 	<div>
 		번호 : ${article.id}
 		<br>
