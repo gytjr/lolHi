@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="title" value="회원가입" />
 <%@ include file="../part/head.jspf"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+
 <script>
 	var joinFormSubmitDone = false;
 	function joinFormSubmit(form) {
@@ -10,7 +12,6 @@
 			alert('처리중입니다.');
 			return;
 		}
-
 		form.loginId.value = form.loginId.value.trim();
 		if (form.loginId.value.length == 0) {
 			alert('로그인 아이디를 입력해주세요.');
@@ -25,7 +26,7 @@
 		}
 		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
 		if (form.loginPw.value != form.loginPwConfirm.value) {
-			alert('로그인 비밀번호 확인이 일치하지 않습니다.');
+			alert('로그인 비번 확인이 일치하지 않습니다.');
 			form.loginPwConfirm.focus();
 			return;
 		}
@@ -36,11 +37,13 @@
 			return;
 		}
 		form.email.value = form.email.value.trim();
-		if (form.v.value.length == 0) {
+		if (form.email.value.length == 0) {
 			alert('이메일을 입력해주세요.');
 			form.email.focus();
 			return;
 		}
+		form.loginPw.value = sha256(form.loginPw.value);
+		form.loginPwConfirm.value = '';
 		form.submit();
 		joinFormSubmitDone = true;
 	}

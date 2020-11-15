@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.sbs.example.lolHi.dao.MemberDao;
 import com.sbs.example.lolHi.dto.Member;
 import com.sbs.example.lolHi.dto.ResultData;
+import com.sbs.example.lolHi.util.Util;
 
 
 @Service
@@ -109,7 +110,7 @@ public class MemberService {
 		}
 		Map<String, Object> modifyParam = new HashMap<>();
 		
-		modifyParam.put("loginPw", tempLoginPw);
+		modifyParam.put("loginPw", Util.sha256(tempLoginPw));
 		modifyParam.put("id", member.getId());
 		
 		memberDao.modifyMemberById(modifyParam);

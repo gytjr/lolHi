@@ -1,0 +1,1195 @@
+2020-11-16 00:01:00 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select *
+		from `member`
+		where `name` = '임꺽정'
+		and `email` = 'hyos4568@gmail.com'
+		limit 1
+ {executed in 1 msec}
+2020-11-16 00:01:00 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |test3   |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:01:07 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:01:07 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:01:07 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 0 msec}
+2020-11-16 00:01:07 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:01:07 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 21 msec}
+2020-11-16 00:01:07 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:10:40 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test2'
+ {executed in 0 msec}
+2020-11-16 00:10:40 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |test2   |60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752 |홍길순  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:10:44 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test2'
+ {executed in 0 msec}
+2020-11-16 00:10:44 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |test2   |60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752 |홍길순  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:10:47 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test2'
+ {executed in 1 msec}
+2020-11-16 00:10:47 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |test2   |60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752 |홍길순  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:10:51 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test2'
+ {executed in 0 msec}
+2020-11-16 00:10:51 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |test2   |60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752 |홍길순  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:11:01 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 0 msec}
+2020-11-16 00:11:01 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13 |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:11:04 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 0 msec}
+2020-11-16 00:11:04 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13 |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:11:08 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 0 msec}
+2020-11-16 00:11:08 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13 |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:11:29 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 0 msec}
+2020-11-16 00:11:29 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13 |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:11:37 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 1 msec}
+2020-11-16 00:11:37 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13 |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:12:15 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test3'
+ {executed in 0 msec}
+2020-11-16 00:12:15 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |test    |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:12:16 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 3
+ {executed in 1 msec}
+2020-11-16 00:12:16 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |test    |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:12:16 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:12:16 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:12:16 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:12:16 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:12:16 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 18 msec}
+2020-11-16 00:12:16 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:12:19 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 3
+ {executed in 0 msec}
+2020-11-16 00:12:19 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|3  |2020-11-15 21:38:48 |2020-11-15 21:38:48 |test3   |test    |임꺽정  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:12:19 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:12:19 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:12:19 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:12:19 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:12:19 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 20 msec}
+2020-11-16 00:12:19 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:12:31 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test'
+ {executed in 0 msec}
+2020-11-16 00:12:31 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:12:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:12:34 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:13:23 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:13:23 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:13:53 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:13:53 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:13:55 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:13:55 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:14:11 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:14:11 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:14:13 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:14:13 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:01 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:15:01 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:04 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:15:04 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:10 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:15:10 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:46 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:15:46 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:49 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:15:49 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:15:55 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:15:55 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:16:00 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:16:00 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:16:09 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 1 msec}
+2020-11-16 00:16:09 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |test    |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:16:10 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 1
+ {executed in 1 msec}
+2020-11-16 00:16:10 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |test    |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:16:10 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:16:10 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:16:10 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:16:10 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:16:10 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 19 msec}
+2020-11-16 00:16:10 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:16:13 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 1
+ {executed in 0 msec}
+2020-11-16 00:16:13 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |test    |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:16:13 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:16:13 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:16:13 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:16:13 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:16:13 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 19 msec}
+2020-11-16 00:16:13 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:16:20 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test'
+ {executed in 0 msec}
+2020-11-16 00:16:20 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:16:25 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:16:25 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |test    |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:16:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test1'
+ {executed in 0 msec}
+2020-11-16 00:16:34 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:16:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 1
+ {executed in 1 msec}
+2020-11-16 00:16:34 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:16:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:16:34 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:16:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:16:34 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:16:34 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 21 msec}
+2020-11-16 00:16:34 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:19:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 1
+ {executed in 1 msec}
+2020-11-16 00:19:17 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email              |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+|1  |2020-11-15 20:37:06 |2020-11-15 23:56:47 |test1   |9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 |홍길동  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|-------------------|
+
+2020-11-16 00:19:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:19:17 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:19:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 0 msec}
+2020-11-16 00:19:17 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:19:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 18 msec}
+2020-11-16 00:19:17 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|id |regdate             |updatedate          |boardid |memberid |title |body |extra__writer |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동           |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순           |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순           |
+|---|--------------------|--------------------|--------|---------|------|-----|--------------|
+
+2020-11-16 00:19:40 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 1 msec}
+2020-11-16 00:19:40 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:19:40 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select *
+		from `member`
+		where `name` = 'zzz'
+		and `email` = 'hyos4568@gmail.com'
+		limit 1
+ {executed in 0 msec}
+2020-11-16 00:19:40 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:19:40 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. insert into `member`
+		 SET regDate = now(),
+			updateDate = now(),
+
+				loginId = 'test4',
+
+				loginPw = 'test4',
+
+				`name` = 'zzz',
+
+				`email` = 'hyos4568@gmail.com'
+ {executed in 2 msec}
+2020-11-16 00:19:45 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:19:45 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:19:45 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 0 msec}
+2020-11-16 00:19:45 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:19:45 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 0 msec}
+2020-11-16 00:19:45 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|id |regdate             |updatedate          |boardid |memberid |title |body |name |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동  |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순  |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순  |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+
+2020-11-16 00:19:52 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 0 msec}
+2020-11-16 00:19:52 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|5  |2020-11-16 00:19:40 |2020-11-16 00:19:40 |test4   |test4   |zzz  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:19:54 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 0 msec}
+2020-11-16 00:19:54 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|5  |2020-11-16 00:19:40 |2020-11-16 00:19:40 |test4   |test4   |zzz  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:20:00 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 0 msec}
+2020-11-16 00:20:00 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|5  |2020-11-16 00:19:40 |2020-11-16 00:19:40 |test4   |test4   |zzz  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:20:15 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 0 msec}
+2020-11-16 00:20:15 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|5  |2020-11-16 00:19:40 |2020-11-16 00:19:40 |test4   |test4   |zzz  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:20:27 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test4'
+ {executed in 0 msec}
+2020-11-16 00:20:27 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|5  |2020-11-16 00:19:40 |2020-11-16 00:19:40 |test4   |test4   |zzz  |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:21:05 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test6'
+ {executed in 0 msec}
+2020-11-16 00:21:05 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:21:05 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select *
+		from `member`
+		where `name` = 'aa'
+		and `email` = 'hyos4568@gmail.com'
+		limit 1
+ {executed in 1 msec}
+2020-11-16 00:21:05 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:21:05 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. insert into `member`
+		 SET regDate = now(),
+			updateDate = now(),
+
+				loginId = 'test6',
+
+				loginPw = 'test6',
+
+				`name` = 'aa',
+
+				`email` = 'hyos4568@gmail.com'
+ {executed in 3 msec}
+2020-11-16 00:21:09 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:21:09 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:21:09 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:21:09 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:21:09 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 1 msec}
+2020-11-16 00:21:09 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|id |regdate             |updatedate          |boardid |memberid |title |body |name |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동  |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순  |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순  |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+
+2020-11-16 00:21:17 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test6'
+ {executed in 1 msec}
+2020-11-16 00:21:17 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|id |regdate             |updatedate          |loginid |loginpw |name |email              |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+|6  |2020-11-16 00:21:05 |2020-11-16 00:21:05 |test6   |test6   |aa   |hyos4568@gmail.com |
+|---|--------------------|--------------------|--------|--------|-----|-------------------|
+
+2020-11-16 00:23:18 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test7'
+ {executed in 0 msec}
+2020-11-16 00:23:18 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:23:18 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select *
+		from `member`
+		where `name` = 'aaaaa'
+		and `email` = 'h8@gmail.com'
+		limit 1
+ {executed in 1 msec}
+2020-11-16 00:23:18 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:23:18 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. insert into `member`
+		 SET regDate = now(),
+			updateDate = now(),
+
+				loginId = 'test7',
+
+				loginPw = 'test7',
+
+				`name` = 'aaaaa',
+
+				`email` = 'h8@gmail.com'
+ {executed in 2 msec}
+2020-11-16 00:23:22 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:23:22 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:23:22 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 1 msec}
+2020-11-16 00:23:22 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:23:22 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 1 msec}
+2020-11-16 00:23:22 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|id |regdate             |updatedate          |boardid |memberid |title |body |name |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동  |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순  |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순  |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+
+2020-11-16 00:25:31 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test9'
+ {executed in 1 msec}
+2020-11-16 00:25:31 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:25:31 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select *
+		from `member`
+		where `name` = 'aa'
+		and `email` = 'e@e'
+		limit 1
+ {executed in 1 msec}
+2020-11-16 00:25:31 [INFO ] jdbc.resultsettable - 
+|---|--------|-----------|--------|--------|-----|------|
+|id |regdate |updatedate |loginid |loginpw |name |email |
+|---|--------|-----------|--------|--------|-----|------|
+|---|--------|-----------|--------|--------|-----|------|
+
+2020-11-16 00:25:31 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. insert into `member`
+		 SET regDate = now(),
+			updateDate = now(),
+
+				loginId = 'test9',
+
+				loginPw = 'b4451034d3b6590060ce9484a28b88dd332a80a22ae8e39c9c5cb7357ab26c9f',
+
+				`name` = 'aa',
+
+				`email` = 'e@e'
+ {executed in 1 msec}
+2020-11-16 00:25:36 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 1 msec}
+2020-11-16 00:25:36 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:25:36 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 0 msec}
+2020-11-16 00:25:36 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:25:36 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 0 msec}
+2020-11-16 00:25:36 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|id |regdate             |updatedate          |boardid |memberid |title |body |name |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동  |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순  |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순  |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+
+2020-11-16 00:25:42 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where loginId = 'test9'
+ {executed in 1 msec}
+2020-11-16 00:25:42 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+|8  |2020-11-16 00:25:31 |2020-11-16 00:25:31 |test9   |b4451034d3b6590060ce9484a28b88dd332a80a22ae8e39c9c5cb7357ab26c9f |aa   |e@e   |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+
+2020-11-16 00:25:43 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select * from `member` where Id = 8
+ {executed in 0 msec}
+2020-11-16 00:25:43 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+|id |regdate             |updatedate          |loginid |loginpw                                                          |name |email |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+|8  |2020-11-16 00:25:31 |2020-11-16 00:25:31 |test9   |b4451034d3b6590060ce9484a28b88dd332a80a22ae8e39c9c5cb7357ab26c9f |aa   |e@e   |
+|---|--------------------|--------------------|--------|-----------------------------------------------------------------|-----|------|
+
+2020-11-16 00:25:43 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT *
+		FROM board
+		WHERE `code` = 'free'
+ {executed in 0 msec}
+2020-11-16 00:25:43 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|-----|-----|
+|id |regdate             |updatedate          |name |code |
+|---|--------------------|--------------------|-----|-----|
+|2  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |자유   |free |
+|---|--------------------|--------------------|-----|-----|
+
+2020-11-16 00:25:43 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. select count(*)
+		from article
+		where 1
+
+		and boardId = 2
+ {executed in 0 msec}
+2020-11-16 00:25:43 [INFO ] jdbc.resultsettable - 
+|---------|
+|count(*) |
+|---------|
+|3        |
+|---------|
+
+2020-11-16 00:25:43 [DEBUG] jdbc.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. SELECT A.*,
+		M.name AS extra__writer
+		FROM article AS A
+		INNER JOIN member AS M
+		ON A.memberId = M.id
+		where 1
+
+		and A.boardId = 2
+
+		order by A.id desc
+
+			LIMIT 0, 10
+ {executed in 0 msec}
+2020-11-16 00:25:43 [INFO ] jdbc.resultsettable - 
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|id |regdate             |updatedate          |boardid |memberid |title |body |name |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+|7  |2020-11-15 21:23:23 |2020-11-15 21:25:42 |2       |1        |sdf   |dfd  |홍길동  |
+|4  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목4   |내용4  |홍길순  |
+|3  |2020-11-15 20:37:06 |2020-11-15 20:37:06 |2       |2        |제목3   |내용3  |홍길순  |
+|---|--------------------|--------------------|--------|---------|------|-----|-----|
+
+2020-11-16 00:28:44 [INFO ] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-16 00:28:44 [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2020-11-16 00:28:44 [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2020-11-16 00:28:44 [INFO ] c.sbs.example.lolHi.LolHiApplication - Starting LolHiApplication on DESKTOP-8UNL9GL with PID 17400 (C:\work\sts-4.8.0.RELEASE-workspace\lolHi\target\classes started by 서꾸 in C:\work\sts-4.8.0.RELEASE-workspace\lolHi)
+2020-11-16 00:28:44 [INFO ] c.sbs.example.lolHi.LolHiApplication - The following profiles are active: local
+2020-11-16 00:28:44 [INFO ] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+2020-11-16 00:28:44 [INFO ] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+2020-11-16 00:28:44 [INFO ] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-11-16 00:28:44 [INFO ] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+2020-11-16 00:28:44 [INFO ] org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-11-16 00:28:44 [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-16 00:28:44 [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 308 ms
+2020-11-16 00:28:44 [INFO ] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-16 00:28:44 [INFO ] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-16 00:28:44 [INFO ] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+2020-11-16 00:28:44 [INFO ] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+2020-11-16 00:28:44 [INFO ] c.sbs.example.lolHi.LolHiApplication - Started LolHiApplication in 0.497 seconds (JVM running for 4537.419)
+2020-11-16 00:28:44 [INFO ] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2020-11-16 00:28:57 [INFO ] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-16 00:28:57 [INFO ] c.sbs.example.lolHi.LolHiApplication - Starting LolHiApplication on DESKTOP-8UNL9GL with PID 17400 (C:\work\sts-4.8.0.RELEASE-workspace\lolHi\target\classes started by 서꾸 in C:\work\sts-4.8.0.RELEASE-workspace\lolHi)
+2020-11-16 00:28:57 [INFO ] c.sbs.example.lolHi.LolHiApplication - The following profiles are active: local
+2020-11-16 00:28:57 [INFO ] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+2020-11-16 00:28:57 [INFO ] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+2020-11-16 00:28:57 [INFO ] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-11-16 00:28:57 [INFO ] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+2020-11-16 00:28:57 [INFO ] org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-11-16 00:28:57 [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-16 00:28:57 [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 303 ms
+2020-11-16 00:28:57 [INFO ] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-16 00:28:57 [INFO ] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-16 00:28:57 [INFO ] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+2020-11-16 00:28:57 [INFO ] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+2020-11-16 00:28:57 [INFO ] c.sbs.example.lolHi.LolHiApplication - Started LolHiApplication in 0.483 seconds (JVM running for 4550.634)
+2020-11-16 00:28:57 [INFO ] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2020-11-16 00:29:45 [INFO ] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
