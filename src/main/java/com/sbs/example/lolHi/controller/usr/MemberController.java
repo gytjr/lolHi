@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.sym.Name;
 import com.sbs.example.lolHi.dto.Member;
 import com.sbs.example.lolHi.service.MemberService;
 import com.sbs.example.lolHi.util.Util;
@@ -31,6 +32,8 @@ public class MemberController {
 	public String doJoin(@RequestParam Map<String, Object> param, Model model) {
 		
 		String loginId = Util.getAsStr(param.get("loginId"), "");
+		String name = Util.getAsStr(param.get("name"), "");
+		String email = Util.getAsStr(param.get("email"), "");
 		
 		if(loginId.length() == 0) {
 			model.addAttribute("msg", "로그인 아이디를 입력해주세요.");
@@ -43,6 +46,14 @@ public class MemberController {
 		if(isJoinAvailableLoginId == false) {
 			model.addAttribute("msg", "이미 사용중인 아이디 입니다.");
 			model.addAttribute("historyBack", true);
+			return "common/redirect";
+		}
+		
+		boolean isJoinAvailableNameAndEmail = memberService.isJoinAvailableNameAndEmail(name, email);
+		
+		if(isJoinAvailableNameAndEmail == false) {
+			model.addAttribute("msg", "이미 가입된 회원의 정보입니다.");
+			model.addAttribute("replaceUri", "/usr/member/findLoginId");
 			return "common/redirect";
 		}
 		

@@ -16,7 +16,10 @@
 				loginPw = #{loginPw},
 			</if>
 			<if test="name != null">
-				`name` = #{name}
+				`name` = #{name},
+			</if>
+			<if test="email != null">
+				`email` = #{email},
 			</if>
 		</set>
 	</insert>
@@ -24,6 +27,15 @@
 	<select id="getMemberByLoginId" resultType="Member">
 		select * from `member` where loginId = #{loginId}
 	</select>
+	
+	<select id="getMemberByNameAndEmail" resultType="Member">
+		select *
+		from `member`
+		where `name` = #{name}
+		and `email` = #{email}
+		limit 1
+	</select>
+	
 	
 	<select id="getMemberById" resultType="Member">
 		select * from `member` where Id = #{Id}

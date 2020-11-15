@@ -42,6 +42,17 @@ public class MemberService {
 	public void modifyMemberById(Map<String, Object> param) {
 		memberDao.modifyMemberById(param);
 	}
+
+
+	public boolean isJoinAvailableNameAndEmail(String name, String email) {
+		if (name == null || name.length() == 0) {
+			return false;
+		}
+		if (email == null || email.length() == 0) {
+			return false;
+		}
+		return false;
+	}
 	
 	
 }

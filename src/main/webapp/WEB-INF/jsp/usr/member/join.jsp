@@ -35,6 +35,12 @@
 			form.name.focus();
 			return;
 		}
+		form.email.value = form.email.value.trim();
+		if (form.v.value.length == 0) {
+			alert('이메일을 입력해주세요.');
+			form.email.focus();
+			return;
+		}
 		form.submit();
 		joinFormSubmitDone = true;
 	}
@@ -50,6 +56,8 @@
 		비밀번호 확인 : <input type="password" maxlength="30" name="loginPwConfirm">
 		<br>
 		이름 : <input type="text" maxlength="30" name="name">
+		<br>
+		이메일 : <input type="email" maxlength="50" name="email">
 	</div>
 	<input type="submit" value="회원가입">
 	<br>
