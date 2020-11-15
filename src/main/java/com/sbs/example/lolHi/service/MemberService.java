@@ -55,6 +55,12 @@ public class MemberService {
 		Member member = memberDao.getMemberByNameAndEmail(name, email);
 		return member == null;
 	}
+
+
+	public Member getMemberByNameAndEmail(String name, String email) {
+		
+		return memberDao.getMemberByNameAndEmail(name, email);
+	}
 	
 	
 }
