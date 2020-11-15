@@ -13,5 +13,6 @@ public class Member {
 	private String updateDate;
 	private String loginId;
 	private String loginPw;
-	private String name;	
+	private String name;
+	private String email;
 }

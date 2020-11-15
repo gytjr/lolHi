@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.core.sym.Name;
 import com.sbs.example.lolHi.dto.Member;
+import com.sbs.example.lolHi.dto.ResultData;
 import com.sbs.example.lolHi.service.MemberService;
 import com.sbs.example.lolHi.util.Util;
 
@@ -38,6 +38,34 @@ public class MemberController {
 		}
 		
 		model.addAttribute("msg", String.format("가입날짜 : %s, 로그인 아이디 : %s",member.getRegDate(), member.getLoginId()));
+		model.addAttribute("historyBack", true);
+		
+		return "common/redirect";
+	}
+	
+	@RequestMapping("/usr/member/findLoginPw")
+	public String showFindLoginPw() {
+		return "usr/member/findLoginPw";
+	}
+	
+	@RequestMapping("/usr/member/doFindLoginPw")
+	public String doFindLoginPw(String email, String loginId, Model model) {
+		Member member = memberService.getMemberByLoginId(loginId);
+		
+		if(member == null) {
+			model.addAttribute("msg", "해당회원은 존재하지 않습니다.");
+			model.addAttribute("historyBack", true);
+			return "common/redirect";
+		}
+		if(member.getEmail().equals(email) == false) {
+			model.addAttribute("msg", "해당회원은 존재하지 않습니다.");
+			model.addAttribute("historyBack", true);
+			return "common/redirect";
+		}
+		
+		ResultData setTempPasswordAndNotifyRsData = memberService.setTempPasswordAndNotify(member);
+		
+		model.addAttribute("msg", String.format(setTempPasswordAndNotifyRsData.getMsg()));
 		model.addAttribute("historyBack", true);
 		
 		return "common/redirect";
