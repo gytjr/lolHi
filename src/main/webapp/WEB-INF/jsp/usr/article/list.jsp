@@ -63,6 +63,10 @@
 		<c:set var="goLastBtnNeedToShow" value="false" />
 	</c:if>
 </c:forEach>
+	<c:if test="${0 == totalPage}">
+		<c:set var="goLastBtnNeedToShow" value="false" />
+		<c:set var="goFirstBtnNeedToShow" value="false" />
+	</c:if>
 
 <!-- 마지막 페이지로 이동버튼이 노출될 필요가 있다면 노출 -->
 <c:if test="${goLastBtnNeedToShow}">
