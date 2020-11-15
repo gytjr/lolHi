@@ -3,18 +3,38 @@ package com.sbs.example.lolHi.service;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.sbs.example.lolHi.dao.MemberDao;
 import com.sbs.example.lolHi.dto.Member;
 
+
 @Service
 public class MemberService {
+	@Value("${custom.siteName}")
+	private String siteName;
+	@Value("${custom.siteMainUri}")
+	private String siteMainUri;
 	@Autowired
 	private MemberDao memberDao;
+	@Autowired
+	private MailService mailService;
 
 	public void insertMember(Map<String, Object> param) {
 		 memberDao.insertMember(param);
+		 
+		 sendJoinCompleteMail((String) param.get("email"));
+	}
+	
+	private void sendJoinCompleteMail(String email) {
+		String mailTitle = String.format("[%s] 가입이 완료되었습니다.", siteName);
+
+		StringBuilder mailBodySb = new StringBuilder();
+		mailBodySb.append("<h1>가입이 완료되었습니다.</h1>");
+		mailBodySb.append(String.format("<p><a href=\"%s\" target=\"_blank\">%s</a>로 이동</p>", siteMainUri, siteName));
+
+		mailService.send(email, mailTitle, mailBodySb.toString());
 	}
 
 
