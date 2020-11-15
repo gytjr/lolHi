@@ -92,43 +92,45 @@ public class ArticleController {
 		return "usr/article/detail";
 	}
 
-	@RequestMapping("usr/article/doDelete")
-	public String doDelete(int id, Model model, HttpServletRequest req) {
+	@RequestMapping("usr/article-{boardCode}/doDelete")
+	public String doDelete(int id, Model model, HttpServletRequest req, @PathVariable("boardCode") String boardCode) {
 		Member loginedMember = (Member)req.getAttribute("loginedMember");
 
 		Article article = articleService.getArticleById(loginedMember, id);
 		
 		if ((boolean) article.getExtra().get("actorCanDelete") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
-			model.addAttribute("replaceUri", "/usr/article-free/list");
+			model.addAttribute("replaceUri", String.format("/usr/article-%s/list", boardCode));
 			return "common/redirect";
 		}
 
 		articleService.deleteArticleById(id);
 		model.addAttribute("msg", String.format("%d번 게시물이 삭제되었습니다.", id));
-		model.addAttribute("replaceUri", "/usr/article-free/list");
+		model.addAttribute("replaceUri", String.format("/usr/article-%s/list", boardCode));
 
 		return "common/redirect";
 	}
 
-	@RequestMapping("usr/article/modify")
-	public String showModify(Model model, int id, HttpServletRequest req) {
+	@RequestMapping("usr/article-{boardCode}/modify")
+	public String showModify(Model model, int id, HttpServletRequest req, @PathVariable("boardCode") String boardCode) {
 		Member loginedMember = (Member)req.getAttribute("loginedMember");
+		Board board = articleService.getBoardByCode(boardCode);
 
 		Article article = articleService.getArticleById(loginedMember, id);
 
 		if ((boolean) article.getExtra().get("actorCanModify") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
-			model.addAttribute("replaceUri", "/usr/article-free/list");
+			model.addAttribute("replaceUri", String.format("/usr/article-%s/list", boardCode));
 			return "common/redirect";
 		}
-
+		
+		model.addAttribute("board", board);
 		model.addAttribute("article", article);
 		return "usr/article/modify";	
 	}
 
-	@RequestMapping("usr/article/doModify")
-	public String doModify(int id, String title, String body, Model model, HttpServletRequest req) {
+	@RequestMapping("usr/article-{boardCode}/doModify")
+	public String doModify(int id, String title, String body, Model model, HttpServletRequest req,@PathVariable("boardCode") String boardCode) {
 		Member loginedMember = (Member)req.getAttribute("loginedMember");
 
 		if (title.length() == 0) {
@@ -149,13 +151,13 @@ public class ArticleController {
 
 		if ((boolean) article.getExtra().get("actorCanModify") == false) {
 			model.addAttribute("msg", "권한이 없습니다.");
-			model.addAttribute("replaceUri", "/usr/article-free/list");
+			model.addAttribute("replaceUri", String.format("/usr/article-%s/list", boardCode));
 			return "common/redirect";
 		}
 
 		articleService.modifyArticleById(id, title, body);
 		model.addAttribute("msg", String.format("%d번 게시물이 수정되었습니다.", id));
-		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
+		model.addAttribute("replaceUri", String.format("/usr/article-%s/detail?id=%d", boardCode, id));
 		return "common/redirect";
 	}
 
@@ -194,7 +196,7 @@ public class ArticleController {
 		int id = articleService.insertArticle(param);
 
 		model.addAttribute("msg", String.format("%d번 게시물이 등록되었습니다.", id));
-		model.addAttribute("replaceUri", String.format("/usr/article/detail?id=%d", id));
+		model.addAttribute("replaceUri", String.format("/usr/article-%s/detail?id=%d", boardCode, id));
 
 		return "common/redirect";
 	}
