@@ -3,6 +3,7 @@ package com.sbs.example.lolHi.service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,8 @@ public class MemberService {
 	private MemberDao memberDao;
 	@Autowired
 	private MailService mailService;
+	@Autowired
+	private AttrService attrService;
 
 	public void insertMember(Map<String, Object> param) {
 		 memberDao.insertMember(param);
@@ -116,6 +119,23 @@ public class MemberService {
 		memberDao.modifyMemberById(modifyParam);
 		
 		return new ResultData("S-1", "임시 비밀번호를 메일로 발송하였습니다.");
+	}
+	
+	public String genCheckLoginPwAuthCode(int actorId) {
+		String authCode = UUID.randomUUID().toString();
+		attrService.setValue("member__" + actorId + "__extra__modifyPrivateAuthCode", authCode,
+				Util.getDateStrLater(60 * 60));
+
+		return authCode;
+	}
+
+	public ResultData checkValidCheckLoginPwAuthCode(int actorId, String checkLoginPwAuthCode) {
+		if (attrService.getValue("member__" + actorId + "__extra__modifyPrivateAuthCode")
+				.equals(checkLoginPwAuthCode)) {
+			return new ResultData("S-1", "유효한 키 입니다.");
+		}
+
+		return new ResultData("F-1", "유효하지 않은 키 입니다.");
 	}
 	
 	
