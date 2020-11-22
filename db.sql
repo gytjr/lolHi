@@ -163,10 +163,12 @@ CREATE TABLE attr (
 
 # attr 유니크 인덱스 걸기
 ## 변수찾는 속도 최적화
-ALTER TABLE `attr` ADD INDEX (`relTypeCode`, `relId`, `typeCode`, `type2Code`); 
+ALTER TABLE `attr` ADD UNIQUE INDEX (`relTypeCode`, `relId`, `typeCode`, `type2Code`); 
 
 ## 특정 조건을 만족하는 회원 또는 게시물(기타 데이터)를 빠르게 찾기 위해서
 ALTER TABLE `attr` ADD INDEX (`relTypeCode`, `typeCode`, `type2Code`);
 
 # attr에 만료날짜 추가
 ALTER TABLE `attr` ADD COLUMN `expireDate` DATETIME NULL AFTER `value`;
+
+SELECT * FROM `attr`;

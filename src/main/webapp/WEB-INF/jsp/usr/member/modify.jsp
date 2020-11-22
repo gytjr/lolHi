@@ -9,6 +9,7 @@
 
 	<div>
 		<input type="hidden" name="updateDate" value="now()">
+		<input type="hidden" name="checkLoginPwAuthCode" value="${param.checkLoginPwAuthCode}">
 		 번호 :	${loginedMember.id} <br>
 		 가입날짜 : ${loginedMember.regDate} <br>
 		 로그인 아이디 : ${loginedMember.loginId} <br>
