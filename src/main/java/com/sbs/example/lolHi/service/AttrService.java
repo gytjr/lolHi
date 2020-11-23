@@ -68,6 +68,10 @@ public class AttrService {
 	public int remove(String relTypeCode, int relId, String typeCode, String type2Code) {
 		return attrDao.remove(relTypeCode, relId, typeCode, type2Code);
 	}
+	
+	public int setValue(String name, String value) {
+		return setValue(name, value, null);
+	}
 
 	public int setValue(String relTypeCode, int relId, String typeCode, String type2Code, String value, String expireDate) {
 		System.out.println("relTypeCode : " + relTypeCode);
