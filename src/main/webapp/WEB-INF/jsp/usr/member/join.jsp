@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="title" value="회원가입" />
 <%@ include file="../part/head.jspf"%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 
 <script>
 	var joinFormSubmitDone = false;
@@ -49,20 +50,36 @@
 	}
 </script>
 
+<style>
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+input {
+	margin: 0 0 15px 0;
+}
+</style>
+
+
 <form action="doJoin" method="post"
-	onsubmit="joinFormSubmit(this); return false;">
+	onsubmit="joinFormSubmit(this); return false;" class="form-signin">
 	<div>
-		ID : <input type="text" maxlength="30" name="loginId">
+		ID 
+		<input type="text" name="loginId" class="form-control" placeholder="아이디를 입력해주세요">
+		비밀번호
+		<input
+			type="password" id="inputPassword" class="form-control"	placeholder="Password" name="loginPw">
+		비밀번호 확인
+		<input type="password" class="form-control" placeholder="비밀번호를 재입력해주세요" name="loginPwConfirm">
+		이름
+		<input type="text" class="form-control" name="name" placeholder="이름을 입력해주세요">
+		이메일
+		<input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요">
 		<br>
-		비밀번호 : <input type="password" maxlength="30" name="loginPw">
-		<br>
-		비밀번호 확인 : <input type="password" maxlength="30" name="loginPwConfirm">
-		<br>
-		이름 : <input type="text" maxlength="30" name="name">
-		<br>
-		이메일 : <input type="email" maxlength="50" name="email">
+		<input type="submit" value="회원가입" class="btn btn-lg btn-primary btn-block">
 	</div>
-	<input type="submit" value="회원가입">
 	<br>
 </form>
 

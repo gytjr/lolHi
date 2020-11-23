@@ -30,15 +30,23 @@
 		loginFormSubmitDone = true;
 	}
 </script>
+<style>
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+</style>
 
-<form action="doLogin" method="post" onsubmit="loginFormSubmit(this); return false;">
+<form action="doLogin" method="post" onsubmit="loginFormSubmit(this); return false;" class="form-signin">
 	<div>
-		ID : <input type="text" name="loginId">
-		<br>
-		비밀번호 : <input type="password" name="loginPw">
+		<label for="inputId" class="sr-only">ID</label>
+		<input type="text" name="loginId" class="form-control" placeholder="아이디를 입력해주세요">
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password"  name="loginPw">
 		<br>
 	</div>
-	<input type="submit" value="로그인">
+	<input type="submit" value="로그인" class ="btn btn-lg btn-primary btn-block">
 	<br>
 </form>
 

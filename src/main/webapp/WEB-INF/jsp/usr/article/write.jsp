@@ -6,14 +6,19 @@
 
 <form action="doWrite" method="post">
 
-	<div>
-		제목 : <input type="text" maxlength="30" placeholder="제목" name="title">
-		<br>
-		내용 : <input type="text" maxlength="30" placeholder="내용" name="body">
-		<br>
-		<input type="submit" value="작성">
+
+	<div class="form-group">
+		<label for="exampleInputTitle">제목</label>
+		<input type="text" class="form-control" name="title"> <small id="emailHelp"
+			class="form-text text-muted">게시물 제목을 입력해주세요</small>
 	</div>
-	<a href="list">리스트</a>
+	<div class="form-group">
+		<label for="exampleInputbody">내용</label>
+		<textarea class="form-control" name="body" id="exampleInputbody" rows="3"></textarea>
+	</div>
+
+	<button type="submit" class="btn btn-primary">작성</button>
+	<a href="list" class="btn btn-primary">리스트</a>
 </form>
 
 <%@ include file="../part/foot.jspf"%>

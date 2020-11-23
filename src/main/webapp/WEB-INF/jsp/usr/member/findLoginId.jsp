@@ -31,15 +31,25 @@
 	}
 </script>
 
+<style>
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+</style>
+
 <form action="doFindLoginId" method="post"
-	onsubmit="findLoginIdFormSubmit(this); return false;">
+	onsubmit="findLoginIdFormSubmit(this); return false;" class="form-signin">
 	<div>
-		이름 : <input type="text" maxlength="30" name="name">
+		이름
+		<input type="text" name="name" class="form-control" placeholder="이름를 입력해주세요">
 		<br>
-		이메일 : <input type="email" maxlength="50" name="email">
+		이메일
+		<input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요">
 	</div>
-	<input type="submit" value="찾기">
 	<br>
+	<input type="submit" value="찾기"  class="btn btn-lg btn-primary btn-block">
 </form>
 
 <%@ include file="../part/foot.jspf"%>

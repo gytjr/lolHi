@@ -25,13 +25,24 @@
 	}
 </script>
 
-<form action="doCheckLoginPw" method="post" onsubmit="checkloginPwFormSubmit(this); return false;">
+<style>
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+</style>
+
+
+<form action="doCheckLoginPw" method="post" onsubmit="checkloginPwFormSubmit(this); return false;" class="form-signin">
 	<input type="hidden" name="redirectUrl" value="/usr/member/modify">
 	<div>
-		비밀번호 : <input type="password" name="loginPw">
+		비밀번호
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password"  name="loginPw">
 	</div>
 	<div>
-		<input type="submit" value="확인">
+	<br>
+		<input type="submit" value="확인" class="btn btn-lg btn-primary btn-block">
 	</div>
 
 </form>
