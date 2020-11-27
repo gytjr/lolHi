@@ -1,6 +1,15 @@
 spring:
   profiles:
     active: local # 기본적으로 local이 선택된다는 뜻
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    timeout: 6000
+    store-type: redis
+    redis:
+      flush-mode: on-save
+      namespace: spring:session
   mail:
     host: smtp.gmail.com
     port: 587
@@ -12,6 +21,12 @@ spring:
          auth: true
          starttls:
            enable: true
+  servlet:
+    multipart:
+      file-size-threshold: 1MB
+      location: C:\temp
+      max-file-size: 100MB
+      max-request-size: 100MB
   mvc:
     view:
       prefix: /WEB-INF/jsp/ 
@@ -21,11 +36,12 @@ spring:
     url: jdbc:log4jdbc:mysql://127.0.0.1:3306/lolHi?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC # DB명 치환
     username: sbsst # DB아이디 치환
     password: sbs123414 # DB비번 치환
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 100MB
-      max-request-size: 100MB      
+server:
+  error:
+    include-exception: true
+    include-stacktrace: always
+    include-message: always
+    include-binding-errors: always    
 
 mybatis:
   type-aliases-package: com.sbs.example.lolHi.dto # dto의 풀 패키지 명 입력
@@ -45,3 +61,18 @@ spring:
   profiles: local
 server:
   port: 8085 # 포트번호 치환
+  
+  
+---
+
+spring:
+  profiles: production
+  servlet:
+    multipart:
+      location: /tmp
+  datasource:
+    username: gytjr
+    password: sbs123414
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/site1?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull 
+
