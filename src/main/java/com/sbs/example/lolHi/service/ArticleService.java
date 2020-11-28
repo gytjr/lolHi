@@ -48,7 +48,7 @@ public class ArticleService {
 
 			boolean actorCanDelete = false;
 			if(actorMember != null) {
-				actorCanDelete = actorMember.getId() == article.getMemberId();
+				actorCanDelete = actorMember.getId() == article.getMemberId() || actorMember.getId() == 1;
 			}
 			boolean actorCanModify = actorCanDelete;
 

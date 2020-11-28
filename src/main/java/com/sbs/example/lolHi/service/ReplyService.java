@@ -44,7 +44,7 @@ public List<Reply> getForPrintArticleReplies(int articleId) {
 
 			boolean actorCanDelete = false;
 			if(actorMember != null) {
-				actorCanDelete = actorMember.getId() == reply.getMemberId();
+				actorCanDelete = actorMember.getId() == reply.getMemberId() || actorMember.getId() == 1;
 			}
 			boolean actorCanModify = actorCanDelete;
 
