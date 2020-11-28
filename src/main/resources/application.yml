@@ -48,8 +48,8 @@ mybatis:
 
 custom:
   siteName: 롤하이
-  siteUrl: http://localhost:8085/
-  siteLoginUri: http://localhost:8085/usr/member/login
+  siteUrl: http://blog.gytjr.site/
+  siteLoginUri: http://blog.gytjr.site/usr/member/login
   emailFrom: no-reply@localhost
   emailFromName : 롤하이
   logging:
@@ -74,5 +74,9 @@ spring:
     username: gytjr
     password: sbs123414
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/site1?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull 
+    url: jdbc:mysql://127.0.0.1:3306/lolHi?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull
+custom:
+  logging:
+    dir: /tmp/lh-log
+    level: info    
 
